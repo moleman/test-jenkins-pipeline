@@ -11,6 +11,10 @@ pipeline {
           "Lint": {
             sh 'echo "Running Lint"'
             
+          },
+          "Browser testing": {
+            sh 'echo "Running browser tests"'
+            
           }
         )
       }
