@@ -13,10 +13,6 @@ pipeline {
             echo 'Running tests'
             
           },
-          "Lint": {
-            sh 'echo "Running Lint"'
-            
-          },
           "Browser testing": {
             sh 'echo "Running browser tests"'
             
@@ -30,7 +26,16 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'echo "Deploy"'
+        parallel(
+          "Deploy": {
+            sh 'echo "Deploy"'
+            
+          },
+          "Stage": {
+            echo 'Test'
+            
+          }
+        )
       }
     }
     stage('Clean up') {
