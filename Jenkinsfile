@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'python:3'
+    }
+    
+  }
   stages {
     stage('Test') {
       steps {
@@ -14,6 +19,10 @@ pipeline {
           },
           "Browser testing": {
             sh 'echo "Running browser tests"'
+            
+          },
+          "Check versions": {
+            sh 'python --version'
             
           }
         )
